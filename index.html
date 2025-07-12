@@ -11,14 +11,15 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #ffffff; /* white background */
+    background-color: #ffffff;
     font-family: 'Arial', sans-serif;
-    color: #000; /* default text color */
+    color: #000;
     height: 100vh;
     overflow: hidden;
+    position: relative;
   }
 
-  /* Bounce animation for the h1 to run infinitely */
+  /* Bounce animation for the `<h1>` for continuous bouncing */
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
@@ -31,30 +32,30 @@
     }
   }
 
-  /* Bounce animation for logo */
+  /* Bounce for logo */
   @keyframes bounceIn {
     0% { transform: translateY(-50px) scale(0.8); opacity: 0; }
     60% { transform: translateY(10px) scale(1.05); opacity: 1; }
     100% { transform: translateY(0) scale(1); opacity: 1; }
   }
 
-  /* Fade-in animation for main content */
+  /* Fade-in for main content */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
 
-  /* Style for the bouncing, colored h1 with new font */
+  /* Style for the `<h1>` with continuous bounce and custom font */
   h1 {
-    font-family: 'Poppins', sans-serif; /* apply Google font */
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 3rem;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    font-size: clamp(2rem, 8vw, 4rem); /* responsive font size */
+    margin-top: 3vh;
+    margin-bottom: 2vh;
     animation: bounce 1.5s infinite;
   }
 
-  /* Color split for "Cy" and "Bug" */
+  /* Split colors for "Cy" and "Bug" */
   h1 span {
     display: inline-block;
   }
@@ -67,13 +68,18 @@
     color: red;
   }
 
-  /* Centered content container with fade effects */
+  /* Centered content container, with fade-in animation */
   .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100%;
+    width: 90%;
+    max-width: 600px;
+    padding: 2vh;
     text-align: center;
     opacity: 0;
     animation: fadeIn 2s forwards;
@@ -81,16 +87,17 @@
   }
 
   p {
-    font-size: 1.25rem;
-    margin-bottom: 40px;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-bottom: 3vh;
     opacity: 0;
     animation: fadeIn 2s forwards;
     animation-delay: 1s;
   }
 
+  /* Button styles with responsiveness */
   .button {
-    padding: 15px 30px;
-    font-size: 1rem;
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     border: none;
     background-color: #ff4c4c;
     color: #fff;
@@ -108,14 +115,28 @@
     transform: scale(1.05);
   }
 
-  /* Style for the logo with bounce animation */
+  /* Logo in top-left with bounce animation */
   .logo {
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 150px;
+    width: clamp(80px, 15vw, 150px);
     height: auto;
     animation: bounceIn 1s ease-out;
+  }
+
+  /* Optional: add some media queries for extra fine-tuning */
+  @media (max-width: 400px) {
+    h1 {
+      font-size: calc(2rem + 1vw);
+    }
+    p {
+      font-size: calc(1rem + 0.5vw);
+    }
+    .button {
+      padding: calc(0.5rem + 1vw);
+      font-size: calc(0.9rem + 0.5vw);
+    }
   }
 </style>
 </head>
@@ -124,7 +145,7 @@
 <!-- Logo in top-left corner with bounce -->
 <img src="logo.png" alt="CyBug Logo" class="logo" />
 
-<!-- Main content with animated heading -->
+<!-- Main content centered with fade-in -->
 <div class="content">
   <h1>
     <span class="cy">Cy</span><span class="bug">Bug</span>
