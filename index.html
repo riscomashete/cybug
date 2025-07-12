@@ -8,27 +8,35 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #0d0d0d;
+    background-color: #ffffff; /* white background */
     font-family: 'Arial', sans-serif;
-    color: #fff;
+    color: #000; /* black text for contrast */
+    height: 100vh;
+  }
+
+  /* Position logo top-left */
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    height: auto;
+  }
+
+  /* Center content */
+  .content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     text-align: center;
-  }
-
-  .logo {
-    width: 150px;
-    height: auto;
-    margin-bottom: 20px;
   }
 
   h1 {
     font-size: 3rem;
+    margin-top: 50px; /* add space below logo */
     margin-bottom: 20px;
-    letter-spacing: 2px;
   }
 
   p {
@@ -54,11 +62,16 @@
 </style>
 </head>
 <body>
-  <!-- Logo Image -->
-  <img src="logo.png" alt="CyBug Logo" class="logo" />
-  
+
+<!-- Logo in top-left corner -->
+<img src="logo.png" alt="CyBug Logo" class="logo" />
+
+<!-- Main centered content -->
+<div class="content">
   <h1>CyBug</h1>
   <p>Offensive Security Services - Coming Soon</p>
   <a href="mailto:contact@cybug.co" class="button">Contact Us</a>
+</div>
+
 </body>
 </html>
