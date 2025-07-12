@@ -12,18 +12,31 @@
     font-family: 'Arial', sans-serif;
     color: #000; /* black text for contrast */
     height: 100vh;
+    overflow: hidden; /* prevent scrollbars during animation */
   }
 
-  /* Position logo top-left */
+  /* Animate logo with bounce effect on load */
+  @keyframes bounceIn {
+    0% { transform: translateY(-50px) scale(0.8); opacity: 0; }
+    60% { transform: translateY(10px) scale(1.05); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
   .logo {
     position: absolute;
     top: 20px;
     left: 20px;
     width: 150px;
     height: auto;
+    animation: bounceIn 1s ease-out;
   }
 
-  /* Center content */
+  /* Fade-in for main content */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
   .content {
     display: flex;
     flex-direction: column;
@@ -31,17 +44,26 @@
     align-items: center;
     height: 100%;
     text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 0.5s; /* delay to start after logo animation */
   }
 
   h1 {
     font-size: 3rem;
-    margin-top: 50px; /* add space below logo */
+    margin-top: 50px;
     margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 1s;
   }
 
   p {
     font-size: 1.25rem;
     margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 1.2s;
   }
 
   .button {
@@ -53,20 +75,24 @@
     cursor: pointer;
     border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 1.4s;
   }
 
   .button:hover {
     background-color: #e04343;
+    transform: scale(1.05); /* slight zoom on hover */
   }
 </style>
 </head>
 <body>
 
-<!-- Logo in top-left corner -->
+<!-- Logo in top-left corner with bounce animation -->
 <img src="logo.png" alt="CyBug Logo" class="logo" />
 
-<!-- Main centered content -->
+<!-- Main centered content with fade-in animation -->
 <div class="content">
   <h1>CyBug</h1>
   <p>Offensive Security Services - Coming Soon</p>
