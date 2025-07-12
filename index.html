@@ -10,33 +10,60 @@
     padding: 0;
     background-color: #ffffff; /* white background */
     font-family: 'Arial', sans-serif;
-    color: #000; /* black text for contrast */
+    color: #000; /* default text color */
     height: 100vh;
-    overflow: hidden; /* prevent scrollbars during animation */
+    overflow: hidden;
   }
 
-  /* Animate logo with bounce effect on load */
+  /* Bounce animation for the h1 to run infinitely */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Bounce animation for logo */
   @keyframes bounceIn {
     0% { transform: translateY(-50px) scale(0.8); opacity: 0; }
     60% { transform: translateY(10px) scale(1.05); opacity: 1; }
     100% { transform: translateY(0) scale(1); opacity: 1; }
   }
 
-  .logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 150px;
-    height: auto;
-    animation: bounceIn 1s ease-out;
-  }
-
-  /* Fade-in for main content */
+  /* Fade-in animation for main content */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
 
+  /* Style for the bouncing, colored h1 */
+  h1 {
+    font-size: 3rem;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    animation: bounce 1.5s infinite;
+  }
+
+  /* Color split for "Cy" and "Bug" */
+  h1 span {
+    display: inline-block;
+  }
+
+  /* Specific colors for parts of h1 */
+  .cy {
+    color: black;
+  }
+
+  .bug {
+    color: red;
+  }
+
+  /* Centered content container with fade effects */
   .content {
     display: flex;
     flex-direction: column;
@@ -46,16 +73,7 @@
     text-align: center;
     opacity: 0;
     animation: fadeIn 2s forwards;
-    animation-delay: 0.5s; /* delay to start after logo animation */
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-    animation-delay: 1s;
+    animation-delay: 0.5s;
   }
 
   p {
@@ -63,7 +81,7 @@
     margin-bottom: 40px;
     opacity: 0;
     animation: fadeIn 2s forwards;
-    animation-delay: 1.2s;
+    animation-delay: 1s;
   }
 
   .button {
@@ -83,18 +101,30 @@
 
   .button:hover {
     background-color: #e04343;
-    transform: scale(1.05); /* slight zoom on hover */
+    transform: scale(1.05);
+  }
+
+  /* Style for the logo with bounce animation */
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    height: auto;
+    animation: bounceIn 1s ease-out;
   }
 </style>
 </head>
 <body>
 
-<!-- Logo in top-left corner with bounce animation -->
+<!-- Logo in top-left corner with bounce -->
 <img src="logo.png" alt="CyBug Logo" class="logo" />
 
-<!-- Main centered content with fade-in animation -->
+<!-- Main content with animated heading -->
 <div class="content">
-  <h1>CyBug</h1>
+  <h1>
+    <span class="cy">Cy</span><span class="bug">Bug</span>
+  </h1>
   <p>Offensive Security Services - Coming Soon</p>
   <a href="mailto:contact@cybug.co" class="button">Contact Us</a>
 </div>
